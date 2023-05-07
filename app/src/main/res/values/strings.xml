@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MobilePart</string>
+    <string name="hello_bro_test">Мы выкупаем!</string>
+    <string name="create_button_text">создать лот</string>
+    <string name="my_losts_button_text">мои лоты</string>
+    <string name="orders_button_text">Заказы</string>
+    <string name="create_lot">Создать лот</string>
+    <string name="hint_link_text">Ссылка на товар</string>
+    <string name="hint_size_text">Размер</string>
+</resources>
