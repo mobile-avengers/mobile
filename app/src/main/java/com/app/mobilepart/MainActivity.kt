@@ -1,18 +1,20 @@
 package com.app.mobilepart
+
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.app.mobilepart.databinding.ActivityMainBinding
 import com.app.mobilepart.model.PingModel
-import com.app.mobilepart.services.PingService
-import java.util.concurrent.ExecutorService
-import java.util.concurrent.Executors
+import com.app.mobilepart.repository.OrderServiceRepository
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+
 
 class MainActivity : AppCompatActivity() {
-    var pingService: PingService = PingService()
+    var repository: OrderServiceRepository = OrderServiceRepository()
 
     lateinit var binding: ActivityMainBinding
 
@@ -39,21 +41,22 @@ class MainActivity : AppCompatActivity() {
         val devToast =  Toast.makeText(this, "In, dev!", Toast.LENGTH_SHORT)
         devToast.show()
 
-        val executor: ExecutorService = Executors.newSingleThreadExecutor()
-        executor.execute {
-            //Background work here
-            run()
-        }
+        ping()
     }
 
-    fun run() {
-        // https://www.baeldung.com/kotlin/khttp
-        try {
-            val p: PingModel = pingService.ping()
-            Log.d("PING STATUS", p.status)
-        } catch (e: java.lang.Exception) {
-            Log.e("ERR", e.message.toString())
-        }
-    }
+    private fun ping() {
+        val call = repository.ping()
+        call!!.enqueue(object : Callback<PingModel?> {
+            override fun onResponse(call: Call<PingModel?>, response: Response<PingModel?>) {
+                val responseFromAPI = response.body()
+                val responseString = responseFromAPI!!.status
+                binding.ordersButton.text = responseString
+            }
 
+            override fun onFailure(call: Call<PingModel?>, t: Throwable) {
+                t.printStackTrace()
+                Toast.makeText(this@MainActivity, "connection to order service failed", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
 }
