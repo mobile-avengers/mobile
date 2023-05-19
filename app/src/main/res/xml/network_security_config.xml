@@ -2,7 +2,6 @@
 <network-security-config>
     <base-config cleartextTrafficPermitted="true" />
     <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">httpbin.org</domain>
         <!-- https://learn.microsoft.com/ru-ru/dotnet/maui/data-cloud/local-web-services#android -->
         <domain includeSubdomains="true">10.0.2.2</domain>
     </domain-config>
