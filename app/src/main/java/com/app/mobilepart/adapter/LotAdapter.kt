@@ -1,7 +1,9 @@
 package com.app.mobilepart.adapter
 
 import android.view.LayoutInflater
+import android.view.OnReceiveContentListener
 import android.view.View
+import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.app.mobilepart.R
@@ -10,19 +12,21 @@ import com.app.mobilepart.model.LotModel
 
 class LotAdapter: RecyclerView.Adapter<LotAdapter.LotHolder>() {
 
-    private val lotik = LotModel(33111,"Подкрадули", 7999.9f,  "ссылка", "размер", "цвет", "описание")
-    private val lotList: ArrayList<LotModel> = arrayListOf(lotik, lotik, lotik, lotik, lotik, lotik)
+    private var lotList: MutableList<Pair<LotModel, Boolean>> = mutableListOf()
 
     class LotHolder(item: View): RecyclerView.ViewHolder(item) {
         private val binding = bind(item)
-        fun bind(lot: LotModel) = with(binding){
+        fun bind(lot: LotModel, listener: OnClickListener) = with(binding){
             lotPhoto.setImageResource(R.drawable.nike_tiffany) //картинки позже будут подгружаться
             val id = lot.id.toString()
             lotId.text = "ID: $id"
-            lotName.text = lot.name
+            lotName.text = lot.name + "??"
+            lotSize.text = lot.size
             lotCost.text = lot.cost.toString()
+            select.setOnClickListener(listener)
         }
     }
+
 
     //создание шаблона
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LotHolder {
@@ -32,7 +36,7 @@ class LotAdapter: RecyclerView.Adapter<LotAdapter.LotHolder>() {
 
     //заполнение view из массива
     override fun onBindViewHolder(holder: LotHolder, position: Int) {
-        holder.bind(lotList[position])
+        holder.bind(lotList[position].first) { setLot(position) }
     }
 
     //
@@ -42,13 +46,15 @@ class LotAdapter: RecyclerView.Adapter<LotAdapter.LotHolder>() {
 
     //Сюда отправить лист с данными
     fun refresh(list: List<LotModel>) {
-        lotList.clear()
-        lotList.addAll(list)
+        lotList = list.map{ Pair(it, false)}.toMutableList()
         notifyDataSetChanged()
     }
 
-    fun addLot(lot: LotModel) {
-        lotList.add(lot)
-        notifyDataSetChanged()
+    fun getSelectedLots(): List<LotModel> {
+        return lotList.filter { i -> i.second }.map { i -> i.first }
+    }
+
+    fun setLot(index: Int) {
+        lotList[index] = Pair(lotList[index].first, !lotList[index].second)
     }
 }

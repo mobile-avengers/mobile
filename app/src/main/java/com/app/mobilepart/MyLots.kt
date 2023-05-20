@@ -2,6 +2,7 @@ package com.app.mobilepart
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.mobilepart.adapter.LotAdapter
@@ -19,15 +20,13 @@ class MyLots : AppCompatActivity() {
 
     private lateinit var binding: ActivityMyLotsBinding
     private val adapter = LotAdapter()
-    private val lotList = LotList()
-
-    private var id = 0 //FIXME выпилить!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMyLotsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         init()
+        binding.button.setOnClickListener(::createOnclick)
     }
 
 
@@ -44,22 +43,40 @@ class MyLots : AppCompatActivity() {
                 call: Call<List<LotModel>?>,
                 response: Response<List<LotModel>?>
             ) {
-                // тут нужно преобразовать в лист лотов нормальный хуй знает что там в боди
 
-                val lots : List<LotModel> = response.body()!!
-                adapter.refresh(lots)
-//                val responseString = responseFromAPI.toString()
-//                binding.ordersButton.text = responseString
+                val lots : List<LotModel>? = response.body()
+                if (lots==null) {
+                    getToast()
+                } else {
+                    adapter.refresh(lots)
+                }
             }
 
             override fun onFailure(call: Call<List<LotModel>>, t: Throwable) {
                 t.printStackTrace()
-                Toast.makeText(
-                    this@MyLots,
-                    "connection to order service failed",
-                    Toast.LENGTH_SHORT
-                ).show()
+                getToast()
             }
         })
     }
+
+    private fun createOnclick(view: View) {
+        val list = adapter.getSelectedLots()
+        if (list.isNotEmpty()) {
+            createOrder(list)
+            finish()
+        }
+    }
+
+    private fun createOrder(list: List<LotModel>) {
+
+    }
+
+    private fun getToast() {
+        Toast.makeText(
+            this@MyLots,
+            "connection to order service failed",
+            Toast.LENGTH_SHORT
+        ).show()
+    }
+
 }

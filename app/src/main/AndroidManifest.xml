@@ -24,8 +24,12 @@
             android:name=".MyOrders"
             android:exported="false" />
         <activity
+            android:name=".OrderLots"
+            android:exported="false"/>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
