@@ -7,5 +7,4 @@ data class LotModel(
     val link: String,
     val size: String,
     val color: String,
-    val description: String,
 )

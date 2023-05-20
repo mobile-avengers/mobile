@@ -36,7 +36,7 @@ class CreateMenu: AppCompatActivity() {
         val size = binding.editTextSize.textSize.toString()
         val color = binding.editTextColor.text.toString()
         val desk = "!!он нам не нужон!!"
-        return LotModel(id,name, cost, link, size, color, desk)
+        return LotModel(id,name, cost, link, size, color)
     }
 
     private fun createLot(lot: LotModel) {
