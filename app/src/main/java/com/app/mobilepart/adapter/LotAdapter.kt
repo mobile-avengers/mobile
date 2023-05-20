@@ -44,6 +44,7 @@ class LotAdapter: RecyclerView.Adapter<LotAdapter.LotHolder>() {
     fun refresh(list: List<LotModel>) {
         lotList.clear()
         lotList.addAll(list)
+        notifyDataSetChanged()
     }
 
     fun addLot(lot: LotModel) {

@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.createButton.setOnClickListener(::openCreateMenu)
         binding.myLotsButton.setOnClickListener(::openMyLots)
-        binding.ordersButton.setOnClickListener(::inDev)
+        binding.ordersButton.setOnClickListener(::openMyOrders)
     }
 
     private fun openCreateMenu(view: View) {
@@ -35,6 +35,11 @@ class MainActivity : AppCompatActivity() {
     private fun openMyLots(view: View) {
         val myLotsIntent = Intent(this, MyLots::class.java)
         startActivity(myLotsIntent)
+    }
+
+    private fun openMyOrders(view: View) {
+        val myOrdersIntent = Intent(this, MyOrders::class.java)
+        startActivity(myOrdersIntent)
     }
 
     fun inDev(view: View) {
