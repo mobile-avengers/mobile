@@ -25,7 +25,7 @@ class MyLots : AppCompatActivity() {
         binding.lotRecycler.layoutManager = LinearLayoutManager(this@MyLots)
         binding.lotRecycler.adapter = adapter
         binding.button.setOnClickListener {
-            val lot = LotModel(id, "Подкрадули", 7999.0f)
+            val lot = LotModel(id, "Подкрадули", 7999.0f, "ссылка", "размер", "цвет", "описание")
             adapter.addLot(lot)
             id++
         }

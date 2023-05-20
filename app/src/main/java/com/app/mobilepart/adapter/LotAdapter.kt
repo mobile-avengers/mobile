@@ -10,7 +10,7 @@ import com.app.mobilepart.model.LotModel
 
 class LotAdapter: RecyclerView.Adapter<LotAdapter.LotHolder>() {
 
-    private val lotik = LotModel(33111,"Подкрадули", 7999.9f)
+    private val lotik = LotModel(33111,"Подкрадули", 7999.9f,  "ссылка", "размер", "цвет", "описание")
     private val lotList: ArrayList<LotModel> = arrayListOf(lotik, lotik, lotik, lotik, lotik, lotik)
 
     class LotHolder(item: View): RecyclerView.ViewHolder(item) {
@@ -50,6 +50,4 @@ class LotAdapter: RecyclerView.Adapter<LotAdapter.LotHolder>() {
         lotList.add(lot)
         notifyDataSetChanged()
     }
-
-
 }
