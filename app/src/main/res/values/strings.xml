@@ -7,4 +7,8 @@
     <string name="create_lot">Создать лот</string>
     <string name="hint_link_text">Ссылка на товар</string>
     <string name="hint_size_text">Размер</string>
+    <string name="create_menu_logo">Собери свой лот</string>
+    <string name="hint_cost_text">Цена</string>
+    <string name="hint_color_text">Цвет</string>
+    <string name="hint_name_text">Дайте название лоту</string>
 </resources>

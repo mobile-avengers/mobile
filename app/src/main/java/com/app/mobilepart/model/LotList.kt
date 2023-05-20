@@ -13,8 +13,6 @@ class LotList {
         // сейчас просто тест работы функции
 
         lots.clear()
-        for (i in 1..15) {
-            lots.add(LotModel(i, "Подкрадули №$i", 7999.9f))
-        }
+
     }
 }

@@ -11,7 +11,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Собери свой лот"
+        android:text="@string/create_menu_logo"
         android:textAlignment="center"
         android:textSize="30sp"
         android:textColorHint="@color/poizon"
@@ -28,18 +28,34 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:layout_margin="10dp"
-        android:inputType="textPersonName"
+        android:inputType="text"
         android:hint="@string/hint_link_text"
         android:textColorHint="@color/poizon"
         android:textSize="30sp"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@id/editTextCost"
+        app:layout_constraintBottom_toTopOf="@id/editTextName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView" />
 
     <EditText
-        android:id="@+id/editTextCost"
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_margin="10dp"
+        android:inputType="text"
+        android:hint="@string/hint_name_text"
+        android:textColorHint="@color/poizon"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@id/editTextSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextLink" />
+
+    <EditText
+        android:id="@+id/editTextSize"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -49,10 +65,42 @@
         android:textColorHint="@color/poizon"
         android:textColor="@color/white"
         android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@id/editTextColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextName" />
+
+    <EditText
+        android:id="@+id/editTextColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_margin="10dp"
+        android:inputType="numberDecimal"
+        android:hint="@string/hint_color_text"
+        android:textColorHint="@color/poizon"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@id/editTextCost"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSize" />
+
+    <EditText
+        android:id="@+id/editTextCost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_margin="10dp"
+        android:inputType="numberDecimal"
+        android:hint="@string/hint_cost_text"
+        android:textColorHint="@color/poizon"
+        android:textColor="@color/white"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@id/addLotButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextLink" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextColor" />
 
     <Button
         android:id="@+id/addLotButton"

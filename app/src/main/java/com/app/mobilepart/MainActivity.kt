@@ -14,7 +14,6 @@ import retrofit2.Response
 
 
 class MainActivity : AppCompatActivity() {
-    var repository: OrderServiceRepository = OrderServiceRepository()
 
     lateinit var binding: ActivityMainBinding
 
@@ -49,22 +48,5 @@ class MainActivity : AppCompatActivity() {
 //        getLots(1)
     }
 
-    private fun getLots(userId: Int) {
-        val call = repository.getAllLotsFromCart(userId)
-        call.enqueue(object : Callback<List<LotModel>> {
-            override fun onResponse(
-                call: Call<List<LotModel>?>,
-                response: Response<List<LotModel>?>
-            ) {
-                val lots = response.body()
-//                val responseString = responseFromAPI.toString()
-//                binding.ordersButton.text = responseString
-            }
 
-            override fun onFailure(call: Call<List<LotModel>>, t: Throwable) {
-                t.printStackTrace()
-                Toast.makeText(this@MainActivity, "connection to order service failed", Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
 }
