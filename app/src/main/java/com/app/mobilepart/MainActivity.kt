@@ -53,55 +53,7 @@ class MainActivity : AppCompatActivity() {
 //        getLotsFromOrder(4) // передаём id заказа!
     }
 
-    private fun createOrder(userId: Int, productIds: List<Int>) {
-        val call = repository.createNewOrder(userId, productIds)
-        call.enqueue(object : Callback<OrderModel> {
-            override fun onResponse(
-                call: Call<OrderModel>,
-                response: Response<OrderModel>
-            ) {
-                // ...
-            }
 
-            override fun onFailure(call: Call<OrderModel>, t: Throwable) {
-                throw t
-            }
-        })
-    }
 
-    private fun getOrdersByUserId(userId: Int) {
-        val call = repository.getOrders(userId)
-        call.enqueue(object : Callback<List<OrderModel>> {
-            override fun onResponse(
-                call: Call<List<OrderModel>>,
-                response: Response<List<OrderModel>>
-            ) {
-                val orders = response.body()
-                Log.d(TAG, orders.toString())
-                // ...
-            }
 
-            override fun onFailure(call: Call<List<OrderModel>>, t: Throwable) {
-                throw t
-            }
-        })
-    }
-
-    private fun getLotsFromOrder(orderId: Int) {
-        val call = repository.getLotsFromOrder(orderId)
-        call.enqueue(object : Callback<List<LotModel>> {
-            override fun onResponse(
-                call: Call<List<LotModel>>,
-                response: Response<List<LotModel>>
-            ) {
-                val lots = response.body()
-                Log.d(TAG, lots.toString())
-                // ...
-            }
-
-            override fun onFailure(call: Call<List<LotModel>>, t: Throwable) {
-                throw t
-            }
-        })
-    }
 }

@@ -3,7 +3,6 @@ package com.app.mobilepart.adapter
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
@@ -26,7 +25,7 @@ class OrderAdapter(): RecyclerView.Adapter<OrderAdapter.OrderHolder>() {
         fun bind(order: OrderModel) = with(binding) {
             orderId.text = "ID:${order.id.toString()}"
             orderCost.text = "Стоимость: ${order.cost.toString()} ₽"
-            if (order.status == "OK") {
+            if (order.condition == "OK") {
                 orderPhoto.setImageResource(R.drawable.ok)
                 orderDate.text = "Одобрено: ${order.date}"
             } else {
