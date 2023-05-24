@@ -7,7 +7,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.mobilepart.adapter.AdminOrderAdapter
-import com.app.mobilepart.adapter.OrderAdapter
 import com.app.mobilepart.databinding.ActivityMyOrdersBinding
 import com.app.mobilepart.model.OrderModel
 import com.app.mobilepart.repository.OrderServiceRepository
@@ -15,11 +14,11 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MyOrders: AppCompatActivity() {
+class AdminOrders: AppCompatActivity() {
 
     private var repository: OrderServiceRepository = OrderServiceRepository()
     private lateinit var binding: ActivityMyOrdersBinding
-    private val adapter = OrderAdapter()
+    private val adapter = AdminOrderAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +28,7 @@ class MyOrders: AppCompatActivity() {
     }
 
     private fun init() {
-        binding.orderRecycler.layoutManager = LinearLayoutManager(this@MyOrders)
+        binding.orderRecycler.layoutManager = LinearLayoutManager(this@AdminOrders)
         binding.orderRecycler.adapter = adapter
         getOrdersByUserId(1)
     }
@@ -59,7 +58,7 @@ class MyOrders: AppCompatActivity() {
 
     private fun getToast() {
         Toast.makeText(
-            this@MyOrders,
+            this@AdminOrders,
             "connection to order service failed",
             Toast.LENGTH_SHORT
         ).show()

@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.mobilepart.adapter.LotAdapter
+import com.app.mobilepart.adapter.OrdersLotAdapter
 import com.app.mobilepart.databinding.ActivityMyOrdersBinding
 import com.app.mobilepart.databinding.ActivityOrderLotsBinding
 import com.app.mobilepart.model.LotModel
@@ -22,7 +23,7 @@ class OrderLots : AppCompatActivity() {
 
     private var repository: OrderServiceRepository = OrderServiceRepository()
     private lateinit var binding: ActivityOrderLotsBinding
-    private val adapter = LotAdapter()
+    private val adapter = OrdersLotAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

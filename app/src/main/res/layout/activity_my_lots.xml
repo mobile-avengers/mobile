@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/colorMainBackground"
     tools:context=".MyLots">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -16,19 +16,30 @@
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
         tools:listitem="@layout/lot_item"
-        tools:itemCount="6"
-        app:layout_constraintBottom_toBottomOf="parent"
+        tools:itemCount="10"
+        app:layout_constraintBottom_toTopOf="@id/guideline_80"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_80"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        android:background="@color/colorItemBackground"
-        app:layout_constraintBottom_toBottomOf="@+id/lot_recycler"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.85"/>
+
+    <Button
+        android:id="@+id/create_order_button"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_margin="10dp"
+        android:text="Собрать заказ"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        app:layout_constraintTop_toBottomOf="@id/guideline_80"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

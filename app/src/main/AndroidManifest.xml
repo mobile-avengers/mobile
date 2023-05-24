@@ -18,10 +18,16 @@
             android:name=".CreateMenu"
             android:exported="false" />
         <activity
+            android:name=".AdminMenu"
+            android:exported="false" />
+        <activity
             android:name=".MyLots"
             android:exported="false" />
         <activity
             android:name=".MyOrders"
+            android:exported="false" />
+        <activity
+            android:name=".AdminOrders"
             android:exported="false" />
         <activity
             android:name=".OrderLots"

@@ -11,4 +11,7 @@
     <string name="hint_cost_text">Цена</string>
     <string name="hint_color_text">Цвет</string>
     <string name="hint_name_text">Дайте название лоту</string>
+    <string name="admin_orders_button_text">Заказы (admin)</string>
+    <string name="edit_condition_text">Новое состояние</string>
+    <string name="change_condition_button_text">Сменить состояние</string>
 </resources>

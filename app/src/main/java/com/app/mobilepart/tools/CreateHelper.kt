@@ -1,4 +1,4 @@
-package com.app.mobilepart
+package com.app.mobilepart.tools
 
 class CreateHelper {
     fun checkLink(link: String): Boolean {

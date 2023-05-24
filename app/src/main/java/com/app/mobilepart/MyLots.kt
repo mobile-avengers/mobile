@@ -29,7 +29,7 @@ class MyLots : AppCompatActivity() {
         binding = ActivityMyLotsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         init()
-        binding.button.setOnClickListener(::createOnclick)
+        binding.createOrderButton.setOnClickListener(::createOnclick)
     }
 
 

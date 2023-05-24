@@ -7,13 +7,14 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.app.mobilepart.AdminMenu
 import com.app.mobilepart.OrderLots
 import com.app.mobilepart.R
 import com.app.mobilepart.databinding.OrderItemBinding.*
 import com.app.mobilepart.model.OrderModel
 import com.app.mobilepart.tools.ConditionTool
 
-class OrderAdapter(): RecyclerView.Adapter<OrderAdapter.OrderHolder>() {
+class AdminOrderAdapter(): RecyclerView.Adapter<AdminOrderAdapter.OrderHolder>() {
 
     private val orderList: ArrayList<OrderModel> = arrayListOf()
 
@@ -31,7 +32,7 @@ class OrderAdapter(): RecyclerView.Adapter<OrderAdapter.OrderHolder>() {
             itemView.setOnClickListener {
                 Toast.makeText(it.context, "Нажали на заказ: ${order.id}", Toast.LENGTH_SHORT).show()
 
-                val orderLotsIntent = Intent(it.context, OrderLots::class.java)
+                val orderLotsIntent = Intent(it.context, AdminMenu::class.java)
                 orderLotsIntent.putExtra("order_id", order.id)
                 startActivity(it.context,orderLotsIntent, null)
             }
