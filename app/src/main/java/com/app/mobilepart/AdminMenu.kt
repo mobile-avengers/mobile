@@ -19,11 +19,12 @@ class AdminMenu : AppCompatActivity() {
         binding.changeConditionButton.setOnClickListener(::changeCondition)
     }
 
-    //Ручку !!!!!!!!
+    // TODO CHANGE ORDER CONDITION
     private fun changeCondition(view: View) {
         //Вот id ордера
 
         val orderID = intent.getIntExtra("order_id",0)
+        val newCondition = binding.editCondition.text.toString()
     }
 
 

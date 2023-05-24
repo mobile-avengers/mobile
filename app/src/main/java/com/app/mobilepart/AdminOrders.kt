@@ -30,7 +30,7 @@ class AdminOrders: AppCompatActivity() {
     private fun init() {
         binding.orderRecycler.layoutManager = LinearLayoutManager(this@AdminOrders)
         binding.orderRecycler.adapter = adapter
-        getOrdersByUserId(1)
+        getOrdersByUserId(1) // TODO GETALLORDERS
     }
 
     private fun getOrdersByUserId(userId: Int) {
