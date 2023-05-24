@@ -13,6 +13,7 @@ import retrofit2.Response
 
 class CreateMenu: AppCompatActivity() {
     private var repository: OrderServiceRepository = OrderServiceRepository()
+    private val helper: CreateHelper = CreateHelper();
     private lateinit var binding: ActivityCreateMenuBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,8 +25,17 @@ class CreateMenu: AppCompatActivity() {
 
     //Отправляет лот в БД и закрывает активити
     private fun createOnClick(view: View) {
-        createLot(1, getLotFromForm())
-        finish()
+        val lotModel = getLotFromForm();
+        if (helper.checkLink(lotModel.link)) {
+            createLot(1, lotModel)
+            finish()
+        } else {
+            Toast.makeText(
+                this@CreateMenu,
+                "Укажите одну ссылку на https://dw4.co/t/A/",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
     //Достает лот из формы
