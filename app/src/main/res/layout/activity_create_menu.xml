@@ -76,7 +76,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:layout_margin="10dp"
-        android:inputType="numberDecimal"
+        android:inputType="number"
         android:hint="@string/hint_color_text"
         android:textColorHint="@color/poizon"
         android:textColor="@color/white"
