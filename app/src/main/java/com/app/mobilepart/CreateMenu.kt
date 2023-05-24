@@ -24,7 +24,6 @@ class CreateMenu: AppCompatActivity() {
         binding.addLotButton.setOnClickListener(::createOnClick)
     }
 
-    //Отправляет лот в БД и закрывает активити
     private fun createOnClick(view: View) {
         val lotModel = getLotFromForm();
         if (helper.checkLink(lotModel.link)) {
@@ -45,13 +44,13 @@ class CreateMenu: AppCompatActivity() {
         val name = binding.editTextName.text.toString()
         val cost = binding.editTextCost.text.toString().toFloat()
         val link = binding.editTextLink.text.toString()
-        val size = binding.editTextSize.textSize.toString()
+        val size = binding.editTextSize.text.toString()
         val color = binding.editTextColor.text.toString()
         return LotModel(id,name, cost, link, size, color)
     }
 
     private fun createLot(userId: Int, lot: LotModel) {
-        val call = repository.addLotToCart(userId, lot)
+        val call = repository.createNewLotAndAddToCart(userId, lot)
         call.enqueue(object : Callback<LotModel> {
             override fun onResponse(
                 call: Call<LotModel>,

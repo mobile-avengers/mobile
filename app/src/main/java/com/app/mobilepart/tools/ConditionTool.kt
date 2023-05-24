@@ -1,34 +1,35 @@
 package com.app.mobilepart.tools
 
 import com.app.mobilepart.R
+import com.app.mobilepart.enums.OrderConditions
 import com.app.mobilepart.model.OrderModel
 
 class ConditionTool {
 
     public fun getFormatDate(order: OrderModel): String {
         when (order.condition) {
-            "new" -> {
+            OrderConditions.NEW.status -> {
                 return "Создан: ${order.createDate.substring(0,10)}"
             }
-            "canceled" -> {
+            OrderConditions.CANCELED.status -> {
                 return "Отклонен: ${order.createDate.substring(0,10)}"
             }
-            "payed" -> {
+            OrderConditions.PAYED.status -> {
                 return "Оплачен: ${order.createDate.substring(0,10)}"
             }
-            "confirmed" -> {
+            OrderConditions.CONFIRMED.status -> {
                 return "Одобрен: ${order.createDate.substring(0,10)}"
             }
-            "boughtInShop" -> {
+            OrderConditions.BOUGHT_IN_SHOP.status -> {
                 return "Выкуплен: ${order.createDate.substring(0,10)}"
             }
-            "sent" -> {
+            OrderConditions.SENT.status -> {
                 return "Отправлен: ${order.createDate.substring(0,10)}"
             }
-            "inDlivery" -> {
+            OrderConditions.IN_DELIVERY.status -> {
                 return "В доставке: ${order.createDate.substring(0,10)}"
             }
-            "clientReceived" -> {
+            OrderConditions.CLIENT_RECEIVED.status -> {
                 return "Получен: ${order.createDate.substring(0,10)}"
             }
             else -> {
@@ -39,28 +40,28 @@ class ConditionTool {
 
     public fun getImage(order: OrderModel): Int {
         when (order.condition) {
-            "new" -> {
+            OrderConditions.NEW.status -> {
                 return R.drawable.news
             }
-            "canceled" -> {
+            OrderConditions.CANCELED.status -> {
                 return R.drawable.canceled
             }
-            "payed" -> {
+            OrderConditions.PAYED.status -> {
                 return R.drawable.payed
             }
-            "confirmed" -> {
+            OrderConditions.CONFIRMED.status -> {
                 return R.drawable.confirmed
             }
-            "boughtInShop" -> {
+            OrderConditions.BOUGHT_IN_SHOP.status -> {
                 return R.drawable.bought
             }
-            "sent" -> {
+            OrderConditions.SENT.status -> {
                 return R.drawable.sent
             }
-            "inDlivery" -> {
+            OrderConditions.IN_DELIVERY.status -> {
                 return R.drawable.delivery
             }
-            "clientReceived" -> {
+            OrderConditions.CLIENT_RECEIVED.status -> {
                 return R.drawable.received
             }
             else -> {

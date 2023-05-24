@@ -6,7 +6,6 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.app.mobilepart.adapter.AdminOrderAdapter
 import com.app.mobilepart.adapter.OrderAdapter
 import com.app.mobilepart.databinding.ActivityMyOrdersBinding
 import com.app.mobilepart.model.OrderModel
@@ -35,7 +34,7 @@ class MyOrders: AppCompatActivity() {
     }
 
     private fun getOrdersByUserId(userId: Int) {
-        val call = repository.getOrders(userId)
+        val call = repository.getAllOrders(userId)
         call.enqueue(object : Callback<List<OrderModel>> {
             override fun onResponse(
                 call: Call<List<OrderModel>>,

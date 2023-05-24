@@ -8,6 +8,7 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Query
 
 interface OrderServicedApi {
@@ -20,7 +21,7 @@ interface OrderServicedApi {
     ): Call<List<LotModel>>
 
     @POST("/api/v1/cart")
-    fun createNewOrderAndAddToCart( // fixme change name to createNewLotAndAddToCart
+    fun createNewLotAndAddToCart(
         @Query("userId") userId: Int,
         @Body lot: LotModel,
     ): Call<LotModel>
@@ -32,12 +33,18 @@ interface OrderServicedApi {
     ): Call<OrderModel>
 
     @GET("/api/v1/orders")
-    fun getOrders(
+    fun getAllOrders(
         @Query("userId") userId: Int,
     ): Call<List<OrderModel>>
 
     @GET("/api/v1/productsFromOrder")
     fun getLotsFromOrder(
-        @Query("orderId") userId: Int,
+        @Query("orderId") orderId: Int,
     ): Call<List<LotModel>>
+
+    @PUT("/api/v1/order")
+    fun changeOrderStatus(
+        @Query("orderId") orderId: Int,
+        @Query("newStatus") newStatus: String
+    ): Call<OrderModel>
 }

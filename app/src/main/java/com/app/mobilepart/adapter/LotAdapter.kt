@@ -20,12 +20,11 @@ class LotAdapter: RecyclerView.Adapter<LotAdapter.LotHolder>() {
             val id = lot.id.toString()
             lotId.text = "ID: $id"
             lotName.text = lot.name
-            lotSize.text = "COST: ${lot.size}"
-            lotCost.text = lot.price.toString() + "₽"
+            lotSize.text = "SIZE: ${lot.size}"
+            lotCost.text = "${lot.price}₽"
             select.setOnClickListener(listener)
         }
     }
-
 
     //создание шаблона
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LotHolder {

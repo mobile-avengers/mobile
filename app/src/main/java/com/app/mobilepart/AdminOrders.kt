@@ -30,11 +30,11 @@ class AdminOrders: AppCompatActivity() {
     private fun init() {
         binding.orderRecycler.layoutManager = LinearLayoutManager(this@AdminOrders)
         binding.orderRecycler.adapter = adapter
-        getOrdersByUserId(1) // TODO GETALLORDERS
+        getOrdersByUserId(1)
     }
 
     private fun getOrdersByUserId(userId: Int) {
-        val call = repository.getOrders(userId)
+        val call = repository.getAllOrders(userId)
         call.enqueue(object : Callback<List<OrderModel>> {
             override fun onResponse(
                 call: Call<List<OrderModel>>,
@@ -63,5 +63,4 @@ class AdminOrders: AppCompatActivity() {
             Toast.LENGTH_SHORT
         ).show()
     }
-
 }

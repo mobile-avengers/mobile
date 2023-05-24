@@ -16,19 +16,23 @@ class OrderServiceRepository {
         return RetrofitInstance.api.getAllLotsFromCart(userId)
     }
 
-    fun addLotToCart(userId: Int, lot: LotModel): Call<LotModel> {
-        return RetrofitInstance.api.createNewOrderAndAddToCart(userId, lot)
+    fun createNewLotAndAddToCart(userId: Int, lot: LotModel): Call<LotModel> {
+        return RetrofitInstance.api.createNewLotAndAddToCart(userId, lot)
     }
 
     fun createNewOrder(userId: Int, productIds: List<Int>): Call<OrderModel> {
         return RetrofitInstance.api.createNewOrder(userId, CreateNewOrderModel(productIds))
     }
 
-    fun getOrders(userId: Int): Call<List<OrderModel>>{
-        return RetrofitInstance.api.getOrders(userId)
+    fun getAllOrders(userId: Int): Call<List<OrderModel>>{
+        return RetrofitInstance.api.getAllOrders(userId)
     }
 
-    fun getLotsFromOrder(userId: Int): Call<List<LotModel>>{
-        return RetrofitInstance.api.getLotsFromOrder(userId)
+    fun getLotsFromOrder(orderId: Int): Call<List<LotModel>>{
+        return RetrofitInstance.api.getLotsFromOrder(orderId)
+    }
+
+    fun changeOrderStatus(orderId: Int, newStatus: String): Call<OrderModel>{
+        return RetrofitInstance.api.changeOrderStatus(orderId, newStatus)
     }
 }
