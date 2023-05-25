@@ -30,8 +30,6 @@ class AdminOrderAdapter(): RecyclerView.Adapter<AdminOrderAdapter.OrderHolder>()
             orderDate.text = tool.getFormatDate(order)
 
             itemView.setOnClickListener {
-                Toast.makeText(it.context, "Нажали на заказ: ${order.id}", Toast.LENGTH_SHORT).show()
-
                 val orderLotsIntent = Intent(it.context, AdminMenu::class.java)
                 orderLotsIntent.putExtra("order_id", order.id)
                 startActivity(it.context,orderLotsIntent, null)
