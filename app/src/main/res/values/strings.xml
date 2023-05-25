@@ -14,4 +14,13 @@
     <string name="admin_orders_button_text">Заказы (admin)</string>
     <string name="edit_condition_text">Новое состояние</string>
     <string name="change_condition_button_text">Сменить состояние</string>
+    <string-array name="conditions">
+        <item>NEW</item>
+        <item>CANCELED</item>
+        <item>PAYED</item>
+        <item>BOUGHT_IN_SHOP</item>
+        <item>SENT</item>
+        <item>IN_DELIVERY</item>
+        <item>CLIENT_RECEIVED</item>
+    </string-array>
 </resources>

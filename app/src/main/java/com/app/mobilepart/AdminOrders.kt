@@ -27,6 +27,11 @@ class AdminOrders: AppCompatActivity() {
         init()
     }
 
+    override fun onResume() {
+        super.onResume()
+        getOrdersByUserId(1)
+    }
+
     private fun init() {
         binding.orderRecycler.layoutManager = LinearLayoutManager(this@AdminOrders)
         binding.orderRecycler.adapter = adapter

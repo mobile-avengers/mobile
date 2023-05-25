@@ -1,9 +1,11 @@
 package com.app.mobilepart
 
 import android.content.ContentValues
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.app.mobilepart.databinding.ActivityAdminMenuBinding
@@ -24,14 +26,23 @@ class AdminMenu : AppCompatActivity() {
         binding = ActivityAdminMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.changeConditionButton.setOnClickListener(::changeCondition)
+
+        //Спинер и его настройка
+        val adapter = ArrayAdapter.createFromResource(this, R.array.conditions, R.layout.condition_item)
+        adapter.setDropDownViewResource(R.layout.dropdown_condition)
+        binding.spinner.adapter = adapter
+
+
     }
 
     private fun changeCondition(view: View) {
         //Вот id ордера
-
         val orderId = intent.getIntExtra("order_id",0)
-        val newCondition = binding.editCondition.text.toString()
+//        val newCondition = binding.editCondition.text.toString()
+        val newCondition = binding.spinner.selectedItem.toString()
+        getToast(newCondition)
         changeOrderCondition(orderId, newCondition)
+        finish()
     }
 
     private fun changeOrderCondition(orderId: Int, newStatus: String) {
